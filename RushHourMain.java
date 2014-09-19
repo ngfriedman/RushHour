@@ -1,3 +1,5 @@
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.JFrame;
 import com.golden.gamedev.*;
@@ -6,22 +8,22 @@ import com.golden.gamedev.object.background.*;
 
 public class RushHourMain extends Game{
 
-    Pieces piece1;
-    Pieces piece2;
+    piece1 piece1;
+    piece2 piece2;
 
     ImageBackground background;
     SpriteGroup PIECES;
     // CollisionManager crashChecker;
 
     public void initResources() {
-	piece1 = new Pieces(getImage("piece1.png"), 100, 300);
-	piece2 = new Pieces(getImage("piece2.png"), 300, 100);
+	piece1 = new piece1(getImage("piece1.png"), 100, 300);
+	piece2 = new piece2(getImage("piece2.png"), 300, 100);
 
 	piece1.setLocation(50, 100);
 	piece2.setLocation(200, 100);
 
 	piece1.setSpeed(0.0, 0);
-	piece1.setMovementSpeed(0.2);
+	//piece1.setMovementSpeed(0.2);
 
 	//piece2.setSpeed(0.0, 0);
 	//piece2.setMovementSpeed(0.2);
@@ -41,7 +43,7 @@ public class RushHourMain extends Game{
     public void update(long elapsedTime) {
 	PIECES.update(elapsedTime);
 
- if (keyDown(KeyEvent.VK_DOWN)) {
+	/* if (keyDown(KeyEvent.VK_DOWN)) {
         	piece1.move(0, piece1.movementSpeed*elapsedTime);
         } 
         if (keyDown(KeyEvent.VK_UP)) {
@@ -52,7 +54,7 @@ public class RushHourMain extends Game{
         }
         if (keyDown(KeyEvent.VK_LEFT)) {
         	piece1.move(-piece1.movementSpeed*elapsedTime, 0);
-        }
+		} */
     }
 
     public void render(Graphics2D g) {
