@@ -10,14 +10,14 @@ import com.golden.gamedev.object.*;
 public class Pieces {
 }
 
-class piece1 {
+class piece1 extends Sprite {
     public piece1(java.awt.image.BufferedImage image, int xLocation, int yLocation) {
 	super(image, xLocation, yLocation);
 	    
     }
 }
 
-class piece2 {
+class piece2 extends Sprite {
     public piece2(java.awt.image.BufferedImage image, int xLocation, int yLocation) {
 	super(image, xLocation, yLocation);
 	    
