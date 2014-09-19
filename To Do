@@ -1,0 +1,20 @@
+Things we should do:
+
+Make lego background to size
+
+add all the pieces
+
+make pieces move
+
+put pieces in arraylist
+
+set up and if statement thing where the pieces can't collide
+
+set up if statement where piece cant make it out of bounds (collision)
+
+set up if statement where pieces can ex. only move horizontal (if width is greater than height you can only change x)
+lable pieces with arrows so you know which direction they can move
+
+set up something where each piece is represented by a key on the keyboard, and clicking the key activates the piece
+
+IF ABOVE DOESNT WORK: work with the gui interface(program other than emacs)
