@@ -39,7 +39,7 @@ public class RushHourMain extends Game{
 	//piece2.setSpeed(0.0, 0);
 	//piece2.setMovementSpeed(0.2);
 
-	background = new ImageBackground(getImage("Lego.png"));
+	background = new ImageBackground(getImage("Lego.jpg"));
 	piece1.setBackground(background);
 
 	PIECES = new SpriteGroup("Player Group");
