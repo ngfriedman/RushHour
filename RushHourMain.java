@@ -10,17 +10,28 @@ public class RushHourMain extends Game{
 
     piece1 piece1;
     piece2 piece2;
+    piece3 piece3;
+    piece4 piece4;
+    piece5 piece5;
 
     ImageBackground background;
     SpriteGroup PIECES;
     // CollisionManager crashChecker;
 
     public void initResources() {
-	piece1 = new piece1(getImage("piece1.png"), 100, 300);
+	piece1 = new piece1(getImage("piece1.png"), 100, 200);
 	piece2 = new piece2(getImage("piece2.png"), 300, 100);
+	piece3 = new piece3(getImage("piece1.png"), 200, 200);
+	piece4 = new piece4(getImage("piece2.png"), 400, 300);
+	piece5 = new piece5(getImage("piece1.png"), 600, 500);
+	
 
-	piece1.setLocation(50, 100);
-	piece2.setLocation(200, 100);
+	piece1.setLocation(100,500);
+	piece2.setLocation(750, 300);
+	piece3.setLocation(300, 300);
+	piece4.setLocation(400, 50);
+	piece5.setLocation(600, 100);
+
 
 	piece1.setSpeed(0.0, 0);
 	//piece1.setMovementSpeed(0.2);
@@ -34,6 +45,11 @@ public class RushHourMain extends Game{
 	PIECES = new SpriteGroup("Player Group");
         PIECES.add(piece1);
 	PIECES.add(piece2);
+	PIECES.add(piece3);
+	PIECES.add(piece4);
+	PIECES.add(piece5);
+	
+
 
 	//	crashChecker = new SimpleCollision();
 	//	crashChecker.setCollisionGroup(PIECES);
@@ -65,7 +81,7 @@ public class RushHourMain extends Game{
     public static void main(String[] args){
 
 	GameLoader game = new GameLoader();
-        game.setup(new RushHourMain(), new Dimension(600, 600), false);
+        game.setup(new RushHourMain(), new Dimension(1000, 1000), false);
         game.start();
 	    }
 }
