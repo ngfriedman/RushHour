@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-
+import java.awt.geom.Point2D;
 import javax.swing.JFrame;
 import com.golden.gamedev.*;
 import com.golden.gamedev.object.*;
@@ -29,16 +29,16 @@ public class RushHourMain extends Game{
     // CollisionManager crashChecker;
 
     //RushHourMain piecesList = new RushHourMain();
-    static  ArrayList<Image> piecesList = new ArrayList<Image>();
+    static  ArrayList<Pieces> piecesList = new ArrayList<Pieces>();
     //Object[] piecesList = new Object[5];
 
     public void initResources() {
 
 	piece1 = new Piece1(getImage("piece1.png"), 100, 200);
 	piece2 = new Piece2(getImage("piece2.png"), 300, 100);
-	piece3 = new Piece3(getImage("piece1.png"), 200, 200);
-	piece4 = new Piece4(getImage("piece2.png"), 400, 300);
-	piece5 = new Piece5(getImage("piece1.png"), 600, 500);
+	piece3 = new Piece3(getImage("pieces3.png"), 200, 200);
+	piece4 = new Piece4(getImage("piece4.png"), 400, 300);
+	piece5 = new Piece5(getImage("piece5.png"), 600, 500);
 
 	piece1.setLocation(100, 500);
 	piece2.setLocation(750, 300);
@@ -69,34 +69,55 @@ public class RushHourMain extends Game{
 
 	public void update(long elapsedTime) {
 	    PIECES.update(elapsedTime);
-
-	if (keyDown(KeyEvent.VK_DOWN)) {
-        	piece1.move(0, piece1.movementSpeed*elapsedTime);
-        } 
-        if (keyDown(KeyEvent.VK_UP)) {
-        	piece1.move(0, -piece1.movementSpeed*elapsedTime);
-        }
-        if (keyDown(KeyEvent.VK_RIGHT)) {
-        	piece1.move(piece1.movementSpeed*elapsedTime, 0);
-        }
-        if (keyDown(KeyEvent.VK_LEFT)) {
-        	piece1.move(-piece1.movementSpeed*elapsedTime, 0);
-		}
+	    Pieces Selected = piece1;
+	    if (keyDown(KeyEvent.VK_1)){
+		Selected = piece1;
+	    }
+	    if (keyDown(KeyEvent.VK_2)){
+		Selected = piece2;
+	    }
+	    if(keyDown(KeyEvent.VK_3)){
+		Selected = piece3;
+	    }
+	    if(keyDown(KeyEvent.VK_4)){
+		Selected = piece4;
+	    }
+	    if(keyDown(KeyEvent.VK_5)){
+		Selected = piece5;
+	    }
+	    if (Selected.getImage().getWidth() < Selected.getImage().getHeight()){
+		    if (keyDown(KeyEvent.VK_DOWN)) {
+			Selected.move(0, piece1.movementSpeed*elapsedTime);
+		    } 
+		    if (keyDown(KeyEvent.VK_UP)) {
+			Selected.move(0, -piece1.movementSpeed*elapsedTime);
+		    }
+	    }
+	
+	    if(Selected.getImage().getWidth() > Selected.getImage().getHeight()){
+		    if (keyDown(KeyEvent.VK_RIGHT)) {
+			Selected.move(piece1.movementSpeed*elapsedTime, 0);
+		    }
+		    if (keyDown(KeyEvent.VK_LEFT)) {
+			Selected.move(-piece1.movementSpeed*elapsedTime, 0);
+		    }
+	    }
+	    
 	}
-
-	public static void overlap() {
+    	public static void overlap() {
 
 	    for (int i = 0; i < piecesList.size(); i++) {
 		try {
-		    Object getPieces = piecesList.get(i);	
-		    BufferedImage bimg = ImageIO.read(new File(piecesList.get(i)));
+		    BufferedImage bimg = piecesList.get(i).getImage();	
+		    // BufferedImage bimg = ImageIO.read(new File(piecesList.get(i).getImage()));
 		    int width          = bimg.getWidth();
 		    int height         = bimg.getHeight();
 		    System.out.println(width + " " + height);
 
-		    int j = 0;
+		    int j = 1;
 		    while (j < (piecesList.size() - i)) {
-			BufferedImage bimg2 = ImageIO.read(new File(piecesList.get(i+j)));
+			 BufferedImage bimg2 = piecesList.get(i+j).getImage();
+			//BufferedImage bimg2 = ImageIO.read(new File(piecesList.get(i+j).getImage()));
 			int width2          = bimg2.getWidth();
 			int height2         = bimg2.getHeight();
 			System.out.println(width + " " + width2 +  " " + height + " " + height2);
@@ -133,4 +154,5 @@ public class RushHourMain extends Game{
         game.start();
 	    }
 }
+
 
