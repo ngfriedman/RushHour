@@ -104,44 +104,50 @@ public class RushHourMain extends Game{
 	    }
 	    
 	}
-    	public static void overlap() {
+	
+	public static void overlap() {
 
-	    for (int i = 0; i < piecesList.size(); i++) {
+	int i= 0;
+	while ( i != selected) {
+	    for (i = 0; i < piecesList.size(); i++) {
 		try {
-		    BufferedImage bimg = piecesList.get(i).getImage();	
-		    // BufferedImage bimg = ImageIO.read(new File(piecesList.get(i).getImage()));
-		    int width          = bimg.getWidth();
-		    int height         = bimg.getHeight();
-		    System.out.println(width + " " + height);
+		    BufferedImage bimgI = piecesList.get(i).getImage();	
+		    int widthI = bimgI.getWidth();
+		    int heightI = bimgI.getHeight();
 
-		    int j = 1;
-		    while (j < (piecesList.size() - i)) {
-			 BufferedImage bimg2 = piecesList.get(i+j).getImage();
-			//BufferedImage bimg2 = ImageIO.read(new File(piecesList.get(i+j).getImage()));
-			int width2          = bimg2.getWidth();
-			int height2         = bimg2.getHeight();
-			System.out.println(width + " " + width2 +  " " + height + " " + height2);
-			j++;
+		    int xLocI = piecesList.get(i).getX;
+		    int yLocI = piecesList.get(i).getY;
+
+		    Point2D.Double ltCornerI = new Point2D.Double (xLocI, yLocI);
+		    Point2D.Double rtCornerI = new Point2D.Double ((xLocI+widthI), yLocI);
+		    Point2D.Double lbCornerI = new Point2D.Double (xLocI, (yLocI+heightI));
+		    Point2D.Double rbCornerI = new Point2D.Double ((xLocI+widthI), (yLocI+heightI));
+
+		    BufferedImage bimgS = piecesList.get(Selected).getImage();
+		    int widthS = bimgS.getWidth();
+		    int heightS = bimgS.getHeight();
+
+		    int xLocS = piecesList.get(Selected).getX;
+		    int yLocS = piecesList.get(Selected).getY;
+
+
+		    Point2D.Double ltCornerS = new Point2D.Double (xLocS, yLocS);
+		    Point2D.Double rtCornerS = new Point2D.Double ((xLocS+widthS), yLocS);
+		    Point2D.Double lbCornerS = new Point2D.Double (xLocS, (yLocS+heightS));
+		    Point2D.Double rbCornerS = new Point2D.Double ((xLocS+widthS), (yLocS+heightS));
+
+		    if(lbCornerI <= ltCornerS <= rbCornerI || lbC <= rtCornerS <= rbCornerI) {
+
+			piecesList.get(Selected).setSpeed(0.0, 0);
+			piecesList.get(Selected).setMovementSpeed(0.0);
 		    }
 		}
 		catch( Exception e) {
 		}
 	    }
 	}
-
-
-
-
-
-
-    /*	int j = pieceList.size;
-	for(int i = 0; i < pieceList.size; i++) {
-       	if (piece.getLocation(); == ) {
-	piece1.setSpeed(0.0, 0);
-	piece2.setMovementSpeed(0.0);
-
-	} */
-
+    }
+    	
     public void render(Graphics2D g) {
     	background.render(g);
 	PIECES.render(g);
