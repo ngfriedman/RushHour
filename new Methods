@@ -1,44 +1,42 @@
 	    public static void overlap(BufferedImage bimgI, BufferedImage bimgS, long elapsedTimed) {
 		//PIECES.overlap(elapsedTime);
-		for (int i = 0; i < piecesList.length; i++) {
-	    if ( piecesList.get(i) == Selected) {
-	    }
-	    else {
+		for (int i = 0; i < piecesList.size(); i++) {
+	    if ( piecesList.get(i) != Selected) {
 		try {
 		    bimgI = piecesList.get(i).getImage();	
-		    int widthI = bimgI.getWidth();
-		    int heightI = bimgI.getHeight();
+		    double widthI = bimgI.getWidth();
+		    double heightI = bimgI.getHeight();
 
-		    int xLocI = piecesList.get(i).getX;
-		    int yLocI = piecesList.get(i).getY;
+		    double xLocI = piecesList.get(i).getX();
+		    double yLocI = piecesList.get(i).getY();
 
-		    bimgS = piecesList.get(Selected).getImage();
-		    int widthS = bimgS.getWidth();
-		    int heightS = bimgS.getHeight();
+		    bimgS = Selected.getImage();
+		    double widthS = bimgS.getWidth();
+		    double heightS = bimgS.getHeight();
 
-		    int xLocS = piecesList.get(Selected).getX;
-		    int yLocS = Selected.getY;
+		    double xLocS = Selected.getX();
+		    double yLocS = Selected.getY();
 
-		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI))){
+		    if((xLocI <= xLocS && xLocS <= (xLocI+widthI) && yLocI <= yLocS &&  yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) && (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS && yLocS <= (yLocI+heightI))){
 
 			if (keyDown(KeyEvent.VK_UP)) {
 			    Selected.move(0, 0);
 			}
 		    }
-		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+		    if((xLocI<= xLocS &&  xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) && (yLocS+heightS) <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) && (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) &&  (yLocS+heightS) <= (yLocI+heightI))){
 
 			if (keyDown(KeyEvent.VK_DOWN)) {
 			    Selected.move(0, 0);
 			} 
 		    }
-		    if((xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+		    if((xLocI<= (xLocS+widthS) &&  (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS && yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) && (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) &&  (yLocS+heightS) <= (yLocI+heightI))){
 
 			if (keyDown(KeyEvent.VK_RIGHT)) {
 			    Selected.move(0, 0);
 			}
 
 		    }
-		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+		    if((xLocI<= xLocS && xLocS <= (xLocI+widthI) && yLocI <= yLocS &&  yLocS <= (yLocI+heightI)) || (xLocI<= xLocS &&  xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) && (yLocS+heightS) <= (yLocI+heightI))){
 
 			if (keyDown(KeyEvent.VK_LEFT)){
 			    Selected.move(0, 0);
@@ -48,33 +46,6 @@
 		catch( Exception e) {
 		}
 	    }
-	}
-    }
-
-    public void inBoundries(long elapsedTime) {
-	//PIECES.update(elapsedTime);
-	if (piecesList.get(Selected).getY > 650) {
-	    if (keyDown(KeyEvent.VK_DOWN)){
-		Selected.move(0, 0);
+		}
 	    }
-	}
-	if (piecesList.get(Selected).getY < 0) {
-	    if (keyDown(KeyEvent.VK_UP)){
-		Selected.move(0, 0);
-	    }
-	}
-	if (piecesList.get(Selected) == piecesList.get(0) && piecesList.get(Selected).getX > 800) {
-	    System.out.println("WODUHOUD YOUWIN");
-	}
-	else if (piecesList.get(Selected).getX > 650) {
-	    if (keyDown(KeyEvent.VK_RIGHT)){
-		Selected.move(0, 0);
-	    }
-	}
-	if (piecesList.get(Selected).getX < 0) {
-	    if (keyDown(KeyEvent.VK_LEFT)){
-		Selected.move(0, 0);
-	    }
-	}
-    }
 	
