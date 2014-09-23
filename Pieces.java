@@ -36,41 +36,75 @@ public class Pieces extends Sprite{
     }
 }
 
-class Piece1 extends Pieces {
+class Piece0 extends Pieces {
+
+    public Piece0(java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+	super(_image, _xLocation, _yLocation);
+	    
+    }
+}
+
+class Piece1 extends Pieces{
 
     public Piece1(java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
 	super(_image, _xLocation, _yLocation);
 	    
     }
 }
-
 class Piece2 extends Pieces{
 
-    public Piece2(java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
-	super(_image, _xLocation, _yLocation);
-	    
-    }
-}
-class Piece3 extends Pieces{
-
-    double movementSpeed = 0;
-
-    public Piece3 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+    public Piece2 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
 	super( _image, _xLocation, _yLocation);
     }
 }
 
-class Piece4 extends Pieces{
+class Piece3 extends Pieces{
 
-    public Piece4 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+    public Piece3 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
     
 	super (_image, _xLocation, _yLocation);
     }
 }
 
+class Piece4 extends Pieces {
+
+    public Piece4 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+	super (_image, _xLocation, _yLocation);
+    }
+}
 class Piece5 extends Pieces {
 
-    public Piece5 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+    public Piece5(java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+	super(_image, _xLocation, _yLocation);
+	    
+    }
+}
+
+class Piece6 extends Pieces{
+
+    public Piece6(java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+	super(_image, _xLocation, _yLocation);
+	    
+    }
+}
+class Piece7 extends Pieces{
+
+    public Piece7 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+	super( _image, _xLocation, _yLocation);
+    }
+}
+
+class Piece8 extends Pieces{
+
+    public Piece8 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
+    
+	super (_image, _xLocation, _yLocation);
+    }
+}
+
+class Piece9 extends Pieces {
+
+    public Piece9 (java.awt.image.BufferedImage _image, int _xLocation, int _yLocation) {
 	super (_image, _xLocation, _yLocation);
     }
 }
