@@ -11,6 +11,8 @@ import java.io.File;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.awt.geom.Point2D;
+import java.util.AbstractCollection;
+
 import javax.swing.JFrame;
 import com.golden.gamedev.*;
 import com.golden.gamedev.object.*;
@@ -145,44 +147,86 @@ public class RushHourMain extends Game{
 	   
 	    
 	}
-    	public static void overlap() {
-
-	    for (int i = 0; i < piecesList.size(); i++) {
+	    public static void overlap(BufferedImage bimgI, BufferedImage bimgS, long elapsedTimed) {
+	PIECES.update(elapsedTime);
+	for (int i = 0; i < pieceList.length; i++) {
+	    if ( i == Selected) {
+	    }
+	    else {
 		try {
-		    BufferedImage bimg = piecesList.get(i).getImage();	
-		    // BufferedImage bimg = ImageIO.read(new File(piecesList.get(i).getImage()));
-		    int width          = bimg.getWidth();
-		    int height         = bimg.getHeight();
-		    System.out.println(width + " " + height);
+		    bimgI = piecesList.get(i).getImage();	
+		    int widthI = bimgI.getWidth();
+		    int heightI = bimgI.getHeight();
 
-		    int j = 1;
-		    while (j < (piecesList.size() - i)) {
-			 BufferedImage bimg2 = piecesList.get(i+j).getImage();
-			//BufferedImage bimg2 = ImageIO.read(new File(piecesList.get(i+j).getImage()));
-			int width2          = bimg2.getWidth();
-			int height2         = bimg2.getHeight();
-			System.out.println(width + " " + width2 +  " " + height + " " + height2);
-			j++;
+		    int xLocI = piecesList.get(i).getX;
+		    int yLocI = piecesList.get(i).getY;
+
+		    bimgS = piecesList.get(Selected).getImage();
+		    int widthS = bimgS.getWidth();
+		    int heightS = bimgS.getHeight();
+
+		    int xLocS = piecesList.get(Selected).getX;
+		    int yLocS = piecesList.get(Selected).getY;
+
+		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI))){
+
+			if (keyDown(KeyEvent.VK_UP)) {
+			    Selected.move(0, 0);
+			}
+		    }
+		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+
+			if (keyDown(KeyEvent.VK_DOWN)) {
+			    Selected.move(0, 0);
+			} 
+		    }
+		    if((xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= (xLocS+widthS) <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+
+			if (keyDown(KeyEvent.VK_RIGHT)) {
+			    Selected.move(0, 0);
+			}
+
+		    }
+		    if((xLocI<= xLocS <= (xLocI+widthI) && yLocI <= yLocS <= (yLocI+heightI)) || (xLocI<= xLocS <= (xLocI+widthI) && yLocI <= (yLocS+heightS) <= (yLocI+heightI))){
+
+			if (keyDown(KeyEvent.VK_LEFT)){
+			    Selected.move(0, 0);
+			}
 		    }
 		}
 		catch( Exception e) {
 		}
 	    }
 	}
+    }
 
-
-
-
-
-
-    /*	int j = pieceList.size;
-	for(int i = 0; i < pieceList.size; i++) {
-       	if (piece.getLocation(); == ) {
-	piece1.setSpeed(0.0, 0);
-	piece2.setMovementSpeed(0.0);
-
-	} */
-
+    public void inBoundries(long elapsedTime) {
+	PIECES.update(elapsedTime);
+	if (piecesList.get(Selected).getY > 650) {
+	    if (keyDown(KeyEvent.VK_DOWN)){
+		Selected.move(0, 0);
+	    }
+	}
+	if (piecesList.get(Selected).getY < 0) {
+	    if (keyDown(KeyEvent.VK_UP)){
+		Selected.move(0, 0);
+	    }
+	}
+	if (piecesList.get(Selected) = piecesList.get(0) && piecesList.get(Selected).getX > 800) {
+	    System.out.println("WODUHOUD YOUWIN");
+	}
+	else if (piecesList.get(Selected).getX > 650) {
+	    if (keyDown(KeyEvent.VK_RIGHT)){
+		Selected.move(0, 0);
+	    }
+	}
+	if (piecesList.get(Selected).getX < 0) {
+	    if (keyDown(KeyEvent.VK_LEFT)){
+		Selected.move(0, 0);
+	    }
+	}
+    }
+	
     public void render(Graphics2D g) {
     	background.render(g);
 	PIECES.render(g);
