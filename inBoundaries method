@@ -1,0 +1,20 @@
+ public boolean inBoundaries(int direction) {
+	//System.out.println("boundary " + Selected.getX() + " " +Selected.getY());
+	if (Selected.getY()+ Selected.getHeight() >= 650 && direction == KeyEvent.VK_DOWN) {
+	    return false;
+	    
+	}
+	if (Selected.getY() <= 0 && direction == KeyEvent.VK_UP) {
+	    return false;
+	}
+	if (Selected == piecesList.get(0) && Selected.getX() > 650) {
+	    System.out.println("WODUHOUD YOUWIN");
+	}
+	else if (Selected.getX() + Selected.getWidth() >= 650 && direction == KeyEvent.VK_RIGHT) {
+	    return false;
+	}
+	if (Selected.getX() <= 0 && direction == KeyEvent.VK_LEFT) {
+	    return false;
+	}
+	return true;
+    }
