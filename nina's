@@ -41,16 +41,16 @@ public class RushHourMain extends Game{
 
     public void initResources() {
 	
-	piece0 = new Piece0(getImage("Student.png"), 10, 215);
-	piece1 = new Piece1(getImage("RedCouch.png"), 350, 10);
-	piece2 = new Piece2(getImage("OrangeSeat.png"), 220, 440);
-	piece3 = new Piece3(getImage("YellowCouch.png"), 550, 110);
-	piece4 = new Piece4(getImage("GreenCouch.png"), 10, 325);
-	piece5 = new Piece5(getImage("BlueSeat.png"), 10, 540);
-        piece6 = new Piece6(getImage("PurpleSeat.png"),390, 430);
-	piece7 = new Piece7(getImage("PinkSeat.png"),330, 540);
-	piece8 = new Piece8(getImage("DarkPurpleSeat.png"),390,200);
-	piece9 = new Piece9(getImage("WhiteSeat.png"),10,10);
+	piece0 = new Piece0(getImage("piece0.png"), 10, 215);
+	piece1 = new Piece1(getImage("piece1.png"), 350, 10);
+	piece2 = new Piece2(getImage("piece2.png"), 220, 440);
+	piece3 = new Piece3(getImage("piece3.png"), 550, 110);
+	piece4 = new Piece4(getImage("piece4.png"), 10, 325);
+	piece5 = new Piece5(getImage("piece5.png"), 10, 540);
+        piece6 = new Piece6(getImage("piece6.png"),390, 430);
+	piece7 = new Piece7(getImage("piece7.png"),330, 540);
+	piece8 = new Piece8(getImage("piece8.png"),390,200);
+	piece9 = new Piece9(getImage("piece9.png"),10,10);
 			    
 	
 	/*	piece1.setLocation(100, 500);
@@ -198,7 +198,6 @@ public class RushHourMain extends Game{
 	return true;
     }
  public boolean inBoundaries(int direction) {
-	//System.out.println("boundary " + Selected.getX() + " " +Selected.getY());
 	if (Selected.getY()+ Selected.getHeight() >= 650 && direction == KeyEvent.VK_DOWN) {
 	    return false;
 	    
@@ -207,9 +206,9 @@ public class RushHourMain extends Game{
 	    return false;
 	}
 	if (Selected == piecesList.get(0) && Selected.getX() > 650) {
-	    System.out.println("WODUHOUD YOUWIN");
+	    System.out.println("YOU MADE IT OUT OF LLAMAPOLOOZA! THE RAISINS ARE ON IN 20, COME BACK SOON!");
 	}
-	else if (Selected.getX() + Selected.getWidth() >= 650 && direction == KeyEvent.VK_RIGHT) {
+	if (Selected != piecesList.get(0) && Selected.getX() + Selected.getWidth() >= 650 && direction == KeyEvent.VK_RIGHT) {
 	    return false;
 	}
 	if (Selected.getX() <= 0 && direction == KeyEvent.VK_LEFT) {
